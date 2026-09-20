@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --noir-bg: #0A0A0A;
+  --noir-card: #141414;
+  --noir-border: #262626;
+  --noir-text: #F5F5F5;
+}
+
+html, body { background: var(--noir-bg); color: var(--noir-text); }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #262626; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a3a; }
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 40s linear infinite; }
+
+/* Fade / slide up on scroll */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal { opacity: 0; }
+.reveal.in-view { animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+/* Smooth image zoom */
+.grid-tile img { transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease; }
+.grid-tile:hover img { transform: scale(1.06); filter: brightness(0.7); }
+.grid-tile .overlay { opacity: 0; transition: opacity 0.4s ease; }
+.grid-tile:hover .overlay { opacity: 1; }
+
+html { scroll-behavior: smooth; }
+
+/* Tracking for headers */
+.tracking-widest-xl { letter-spacing: 0.28em; }
